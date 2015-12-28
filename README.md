@@ -1,37 +1,8 @@
-[![Build
-status](https://travis-ci.org/inconshreveable/ngrok.svg)](https://travis-ci.org/inconshreveable/ngrok)
+#ngrokchina说明文档
+概述：由于国内golang被墙，直接编译ngork时很多依赖包无法下载，从而导致编译失败，该问题是近期才出现，网上看到的可直接编译的方法并不适用于现在的国内网络环境。为了广大的用户需要，特基于内网穿透软件ngork 1.7建立了在国内可编译版本。此版本已经下载好所有的ngrok编译所需的依赖包，可离线状态下编译，且在bin目录下已经包含已经编译好的linux和windows操作系统下X86平台可用的可执行文件具体使用说明可见NGROK_README.md文件。
 
-# ngrok - Introspected tunnels to localhost ([homepage](https://ngrok.com))
-### "I want to securely expose a web server to the internet and capture all traffic for detailed inspection and replay"
-![](https://ngrok.com/static/img/overview.png)
-
-## What is ngrok?
-ngrok is a reverse proxy that creates a secure tunnel from a public endpoint to a locally running web service.
-ngrok captures and analyzes all traffic over the tunnel for later inspection and replay.
-
-## ngrok 2.0
-**NOTE** This repository contains the code for ngrok 1.0. The code for ngrok 2.0 is not yet open source.
-
-## What can I do with ngrok?
-- Expose any http service behind a NAT or firewall to the internet on a subdomain of ngrok.com
-- Expose any tcp service behind a NAT or firewall to the internet on a random port of ngrok.com
-- Inspect all http requests/responses that are transmitted over the tunnel
-- Replay any request that was transmitted over the tunnel
-
-
-## What is ngrok useful for?
-- Temporarily sharing a website that is only running on your development machine
-- Demoing an app at a hackathon without deploying
-- Developing any services which consume webhooks (HTTP callbacks) by allowing you to replay those requests
-- Debugging and understanding any web service by inspecting the HTTP traffic
-- Running networked services on machines that are firewalled off from the internet
-
-
-## Downloading and installing ngrok
-ngrok has _no_ runtime dependencies. Just download a single binary for your platform and run it. Some premium features
-are only available by creating an account on ngrok.com. If you need them, [create an account on ngrok.com](https://ngrok.com/signup).
-
-#### [Download ngrok for your platform](https://ngrok.com/download)
-
-## Developing on ngrok
-[ngrok developer's guide](docs/DEVELOPMENT.md)
+编译过程：
+1、在linux操作系统下运行./pre.sh生成签名文件，用户可将NGROK_DOMAIN参数改为自己的域名来生成签名文件
+2、运行./windows.sh编译生成windows平台下可运行的ngrok客户段和服务器程序
+3、运行./linux.sh编译生成linux平台下可运行的程序
+4、运行./clean.sh清楚所有已经编译的信息
