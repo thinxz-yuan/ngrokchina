@@ -1,0 +1,24 @@
+1、启动ngrokd服务端
+（1）ngrokd -domain="$NGROK_DOMAIN" -httpAddr=":8000"
+（2）sudo ngrokd -domain="tunnel.tonybai.com" -httpAddr=":8080" -httpsAddr=":8081" -tunnelAddr=":443"  
+特殊说明：linux操作系统下非root用户不可监听1024以下的端口
+2、启动ngrok客户端
+客户端使用，需要首先创建配置文件，可以根据自己的实际情况进行配置，如创建http和ssh隧道的配置文件如下：
+server_addr: "jinglingshu.org:4443"
+trust_host_root_certs: false
+tunnels:
+  http:
+    subdomain: "example"
+    auth: "user:12345"
+    proto:
+      http: "80"
+  ssh:
+    remote_port: 2222
+    proto:
+      tcp: "22"
+配置完成后，如下启动客户端：
+linux：
+（1）ngrok -config ngrok.conf start http
+（2）ngrok -subdomain example -config=ngrok.cfg 80
+windows:
+ngrok.exe  -config ngrok.conf start http
