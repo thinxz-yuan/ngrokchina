@@ -1,6 +1,6 @@
 #!/bin/sh
 rm -fv assets/client/tls/ngrokroot.crt device.crt assets/server/tls/snakeoil.crt assets/server/tls/snakeoil.key
-export NGROK_DOMAIN="tunnel.ptwop.xyz"
+export NGROK_DOMAIN="ngrok.thinxz.cn"
 echo $NGROK_DOMAIN
 openssl genrsa -out rootCA.key 2048
 openssl req -x509 -new -nodes -key rootCA.key -subj "/CN=$NGROK_DOMAIN" -days 5000 -out rootCA.pem
